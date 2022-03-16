@@ -3,11 +3,12 @@ This is Open**H**aptic**E**ngine, OpenHE is a universal haptic feedback build fo
 
 **Update0**
 
-1.  It is capable to track postion of fingers from webcam in real time, and use hand guesture to control system volumn.
+1.  It is capable to track postion of fingers from webcam in real time, and use hand guesture to control system volumn. (See my other repo for examples.)
 2.  Successfully capture video stream from VR games.
 
 ![Update0](https://github.com/RyanPiao/WindowCapture/blob/main/screenshots/WindowCapture.png)
 
-**Update: In-game hand tranking successfully: this is screenshot from Boneworks**
+**Update1**
+Successfully capture in-game characters' hand from Boneworks.
 
-![When index finger and thumb are fully apart from each other: Max windows volumn](https://github.com/RyanPiao/WindowCapture/blob/main/screenshots/in-game-hand-tranking.png)
+![Update1](https://github.com/RyanPiao/WindowCapture/blob/main/screenshots/in-game-hand-tranking.png)
