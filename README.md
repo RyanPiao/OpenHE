@@ -1,5 +1,5 @@
 # OpenHE
-This is Open**H**aptic**E**ngine, OpenHE is a universal haptic feedback build for OpenGloveDriver. OpenHE is able to reconize in-game characters' hand by utilize opencv and mediapipe, use the captured hand data to track postion of fingers in real time. With OpenGloveDriver and hardware, OpenHE is able to send back calculated figure postion and stop Stepper motor in the right postion to mimic Grip feedback. 
+This is Open**H**aptic**E**ngine, OpenHE is a universal haptic(Grip) feedback build for OpenGloveDriver. OpenHE is able to reconize in-game characters' hand by utilize opencv and mediapipe, use the captured hand data to track postion of fingers in real time. With OpenGloveDriver and hardware, OpenHE is able to send back calculated figure postion and stop Stepper motor in the right postion to mimic Grip feedback. 
 
 **Update0**
 
