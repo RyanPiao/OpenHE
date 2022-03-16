@@ -3,8 +3,10 @@ This is Open**H**aptic**E**ngine, OpenHE is a universal haptic(Force) feedback b
 
 # What is OpenGloveDriver and Lucidglove?
 A SteamVR (OpenVR) driver for VR Gloves and DIY Hardware. 
-**[OpenGloveDriver](https://github.com/LucidVR/opengloves-driver).** 
-**[LucidGloves](https://github.com/LucidVR/lucidgloves).** 
+
+- **About the OpenGloveDriver: [OpenGloveDriver](https://github.com/LucidVR/opengloves-driver).** 
+
+- **About the LucidGloves: [LucidGloves](https://github.com/LucidVR/lucidgloves).** 
 
 # Update0
 
