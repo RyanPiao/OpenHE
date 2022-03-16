@@ -1,5 +1,9 @@
 # OpenHE
-This is Open**H**aptic**E**ngine, OpenHE is a universal haptic(Force) feedback build for OpenGloveDriver. OpenHE is able to recognize in-game characters' hands by utilizing OpenCV and mediapipe, using the captured hand data to track positions of fingers in real-time. With OpenGloveDriver and hardware, OpenHE is able to send back the calculated figure position and stop the stepper motor in the right postion to mimic force feedback. 
+This is Open**H**aptic**E**ngine, OpenHE is a universal haptic(Force) feedback build for OpenGloveDriver. OpenHE is able to recognize in-game characters' hands by utilizing OpenCV and mediapipe, using the captured hand data to track positions of fingers in real-time. With OpenGloveDriver and Lucidglove hardware, OpenHE is able to send back the calculated figure position and stop the stepper motor in the right postion to mimic force feedback. 
+
+##What is OpenGloveDriver?
+A SteamVR (OpenVR) driver for VR Gloves and DIY Hardware. 
+**[OpenGloveDriver](https://github.com/LucidVR/opengloves-driver).** 
 
 **Update0**
 
