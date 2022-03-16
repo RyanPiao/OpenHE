@@ -1,18 +1,19 @@
 # OpenHE
 This is Open**H**aptic**E**ngine, OpenHE is a universal haptic(Force) feedback build for OpenGloveDriver. OpenHE is able to recognize in-game characters' hands by utilizing OpenCV and mediapipe, using the captured hand data to track positions of fingers in real-time. With OpenGloveDriver and Lucidglove hardware, OpenHE is able to send back the calculated figure position and stop the stepper motor in the right postion to mimic force feedback. 
 
-##What is OpenGloveDriver?
+# What is OpenGloveDriver and Lucidglove?
 A SteamVR (OpenVR) driver for VR Gloves and DIY Hardware. 
 **[OpenGloveDriver](https://github.com/LucidVR/opengloves-driver).** 
+**[LucidGloves](https://github.com/LucidVR/lucidgloves).** 
 
-**Update0**
+# Update0
 
 1.  It is capable to track positions of fingers from the webcam in real-time, and using hand gestures to control the system volume. (See my other repo for examples.)
 2.  Successfully capture video stream from VR games.
 
 ![Update0](https://github.com/RyanPiao/WindowCapture/blob/main/screenshots/WindowCapture.png)
 
-**Update1**
+# Update
 Successfully captured in-game characters' hands from Boneworks.
 ![Update1](https://github.com/RyanPiao/WindowCapture/blob/main/screenshots/in-game-hand-tranking.png)
 
