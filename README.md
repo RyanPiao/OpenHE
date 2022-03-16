@@ -30,7 +30,7 @@ The basic idea:
 2. When the value of endpoint_range does not change anymore in the game (or hit a threshold), in reality, the glove's stepper motor will stop right there. Therefore, your finger could not move future. This will mimic force feedback. 
 3. Send force feedback via a Named Pipe to the OpenGloveDriver. 
  - **pygloves can be used here: [pygloves](https://github.com/PerlinWarp/pygloves).** 
-4. Even futher,I can use a classifier to predict the hand pose. It keeps track of the previous predictions and then predicts the finger position to be the most common pose in the pass. It will reduce latency.
+4. Even futher,I can use a classifier to predict the hand pose. It keeps track of the previous predictions and then predicts the finger position to be the most common pose in the pass. Hopefully, It will reduce latency.
 
 # Update 2
 Coming soon.
