@@ -16,7 +16,7 @@ A SteamVR (OpenVR) driver for VR Gloves and DIY Hardware.
 ![Update0](https://github.com/RyanPiao/WindowCapture/blob/main/screenshots/WindowCapture.png)
 
 # Update 1
-Successfully captured in-game characters' hands from Boneworks.
+Successfully captured landmarks from in-game characters' hands, this is screenshot from Boneworks.
 ![Update1](https://github.com/RyanPiao/WindowCapture/blob/main/screenshots/in-game-hand-tranking.png)
 
 **What is next?**
