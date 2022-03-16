@@ -4,10 +4,6 @@ import os
 from time import time
 from windowcapture import WindowCapture
 
-# Change the working directory to the folder this script is in.
-# Doing this because I'll be putting the files from each video in their own folder on GitHub
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
-
 ## Get windowCapture Name
 # WindowCapture.list_window_names()
 # exit()
