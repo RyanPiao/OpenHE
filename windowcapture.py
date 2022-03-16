@@ -1,5 +1,6 @@
 import numpy as np
 import win32gui, win32ui, win32con
+from pywinauto import Desktop
 
 
 class WindowCapture:
@@ -14,15 +15,13 @@ class WindowCapture:
     offset_y = 0
 
     # constructor
-    def __init__(self, window_name=None):
+    def __init__(self, window_name):
         # find the handle for the window we want to capture.
         # if no window name is given, capture the entire screen
-        if window_name is None:
-            self.hwnd = win32gui.GetDesktopWindow()
-        else:
-            self.hwnd = win32gui.FindWindow(None, window_name)
-            if not self.hwnd:
-                raise Exception('Window not found: {}'.format(window_name))
+
+        self.hwnd = win32gui.FindWindow(None, window_name)
+        if not self.hwnd:
+            raise Exception('Window not found: {}'.format(window_name))
 
         # get the window size
         window_rect = win32gui.GetWindowRect(self.hwnd)
@@ -82,12 +81,17 @@ class WindowCapture:
     # find the name of the window you're interested in.
     # once you have it, update window_capture()
     # https://stackoverflow.com/questions/55547940/how-to-get-a-list-of-the-name-of-every-open-window
-    @staticmethod
-    def list_window_names():
-        def winEnumHandler(hwnd, ctx):
-            if win32gui.IsWindowVisible(hwnd):
-                print(hex(hwnd), win32gui.GetWindowText(hwnd))
-        win32gui.EnumWindows(winEnumHandler, None)
+    def let_user_pick(options):
+        print("Please choose:")
+        for idx, element in enumerate(options):
+            print("{}) {}".format(idx+1,element))
+        i = input("Enter number: ")
+        try:
+            if 0 < int(i) <= len(options):
+                return int(i) -1
+        except:
+            pass
+        return None
 
     # translate a pixel position on a screenshot image to a pixel position on the screen.
     # pos = (x, y)
