@@ -3,42 +3,56 @@ import mediapipe as mp
 import numpy as np
 import os
 import time
-from windowcapture import WindowCapture
 import HandTrackingModule
+from windowcapture import WindowCapture
 from pywinauto import Desktop
 
-## Get windowCapture Name
+## Let user select the active VR game window.
+# Get name for all active windows
 opened_windows = Desktop(backend="uia").windows()
 captured_window_names= [w.window_text() for w in opened_windows]
+# Let user pick the game window.
 window_name_index=WindowCapture.let_user_pick(captured_window_names)
 game_window_name = captured_window_names[window_name_index]
+print('Selected Game window: ' + game_window_name)
 
-# WindowCapture Loop
+## For WindowCapture Loop - initial values
 pTime = 0
 cTime = 0
 
-# initialize the WindowCapture and HandTrackingModule class
+## Initialize the WindowCapture and HandTrackingModule class
 detector = HandTrackingModule.handDetector()
 wincap = WindowCapture(game_window_name)
 
 while(True):
-    # get an updated image of the game
+    ## get an updated image of the game
     screenshot = wincap.get_screenshot()
     img = detector.findHands(screenshot, draw=True )
 
-    # Calculate FPS
+    ## Get Hand Landmark and cricial points.
     lmList = detector.findPosition(img, draw=False)
-    if len(lmList) != 0:
-        print(lmList[4])
+    
+    #if len(lmList) != 0:
+    #    print(lmList[4])
+        
+        # Thumb
+        #t1, t2 = lmList[][]
+        # Index Finger
+        # Middle Finger
+        # Ring Finger
+        # Pinky
+
+
+    ## Calculate FPS
     cTime = time.time()
     fps = 1 / (cTime - pTime)
     pTime = cTime
     
-    # Display FPS on captured window
+    ## Display FPS on captured window
     cv.putText(img, str(int(fps)), (10, 70), cv.FONT_HERSHEY_PLAIN, 3,
                 (255, 0, 255), 3)
 
-    # Quit the capture window
+    ## Quit the capture window
     cv.imshow("Game Capture", img)
     # press 'q' with the output window focused to exit.
     # waits 1 ms every loop to process key presses
