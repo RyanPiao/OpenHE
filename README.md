@@ -5,6 +5,6 @@ This repo is test for my OpenHE Project, OpenHE is a universal haptic feedback s
 
 ![When index finger and thumb are fully apart from each other: Max windows volumn](https://github.com/RyanPiao/WindowCapture/blob/main/screenshots/WindowCapture.png)
 
-**update: In-game hand tranking successfully: this is screenshot from Boneworks**
+**Update: In-game hand tranking successfully: this is screenshot from Boneworks**
 
 ![When index finger and thumb are fully apart from each other: Max windows volumn](https://github.com/RyanPiao/WindowCapture/blob/main/screenshots/in-game-hand-tranking.png)
