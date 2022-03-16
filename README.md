@@ -1,5 +1,5 @@
 # OpenHE
-This repo is test for my OpenHE Project, OpenHE is a universal haptic feedback solution for VR Games. In this program, I will mainly use Pywin32 to caputre series of screenshots to creat video feeds from VR games. As this moment, the FPS of window capture is about 40 to 50. (More than enough for OpenHE project)
+This is Open**H**aptic**E**ngine, OpenHE is a universal haptic feedback build for OpenGloveDriver. OpenHE is able to reconize in-game characters' hand by utilize opencv and mediapipe, use the captured hand data to track postion of fingers in real time. With OpenGloveDriver and hardware, OpenHE is able to send back calculated hand postion and stop Stepper motor in the right postion to mimic Grip feedback.
 
 **When index finger and thumb are fully apart from each other: Max windows volumn**
 
