@@ -10,5 +10,4 @@ This is Open**H**aptic**E**ngine, OpenHE is a universal haptic feedback build fo
 
 **Update1**
 Successfully capture in-game characters' hand from Boneworks.
-
 ![Update1](https://github.com/RyanPiao/WindowCapture/blob/main/screenshots/in-game-hand-tranking.png)
