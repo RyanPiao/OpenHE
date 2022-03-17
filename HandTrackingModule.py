@@ -42,6 +42,7 @@ class handDetector():
             handNo = self.results.multi_handedness
             for idx, classification in enumerate(handNo):
                 # Left hand or Right hand, that is quesion.
+                # Index=0 -> Left | Index=1 -> Right
                 index = classification.classification[0].index
                 label = classification.classification[0].label
                 score = classification.classification[0].score
