@@ -5,7 +5,7 @@ import numpy as np
 
 # class creation
 class handDetector():
-    def __init__(self, mode=False, maxHands=2, detectionCon=0.5,modelComplexity=1,trackCon=0.5):
+    def __init__(self, mode=False, maxHands=2, detectionCon=0.8,modelComplexity=1,trackCon=0.5):
         self.mode = mode
         self.maxHands = maxHands
         self.detectionCon = detectionCon
@@ -32,9 +32,12 @@ class handDetector():
         return img
 
     def findPosition(self,img, draw=True):
-        """Lists the position/type of hand, and finger angles."""
+        """Lists the position/type of landmarks
+        we give in the list and in the list ww have stored
+        type and position of the landmarks.
+        List has all the lm position"""
         lmlist = []
-        joint_list = [[4,3,1], [8,7,5], [12,11,9], [16,15,13], [20,19,17]]
+        joint_list = [[4,3,2], [8,7,5], [12,10,9], [16,14,13], [20,18,17]]
         # check wether any landmark was detected
         if self.results.multi_hand_landmarks:
             #Which hand are we talking about
@@ -45,13 +48,14 @@ class handDetector():
             for num, hand in enumerate(self.results.multi_hand_landmarks):
                 #Loop through joint sets 
                 for joint in joint_list:
-                    a = np.array([hand.landmark[joint[0]].x, hand.landmark[joint[0]].y]) # First coord
-                    b = np.array([hand.landmark[joint[1]].x, hand.landmark[joint[1]].y]) # Second coord
-                    c = np.array([hand.landmark[joint[2]].x, hand.landmark[joint[2]].y]) # Third coord
-                    radians = np.arctan2(c[1] - b[1], c[0]-b[0]) - np.arctan2(a[1]-b[1], a[0]-b[0])
-                    angle = np.abs(radians*180.0/np.pi)
-                    if angle > 180.0:
-                        angle = 360-angle
-                    # Get finger id, finger angle, side of hand.
+                    a = np.array([hand.landmark[joint[0]].x, hand.landmark[joint[0]].y, hand.landmark[joint[0]].z]) # First coord
+                    b = np.array([hand.landmark[joint[1]].x, hand.landmark[joint[1]].y, hand.landmark[joint[1]].z]) # Second coord
+                    c = np.array([hand.landmark[joint[2]].x, hand.landmark[joint[2]].y, hand.landmark[joint[2]].z]) # Third coord
+                    # Calculate angle between three points using their 3D coordinates
+                    ba = a - b
+                    bc = c - b
+                    cosine_angle = np.dot(ba, bc) / (np.linalg.norm(ba) * np.linalg.norm(bc))
+                    angle = np.arccos(cosine_angle)
+                    # Put figer id, calculated angle, and side of hand into a list.
                     lmlist.append([num,angle,index])
         return lmlist
