@@ -35,4 +35,8 @@ The basic idea:
 # Update 2
 - calculated all endpoint_range for left hand.\
 ![demo](https://github.com/RyanPiao/OpenHE/blob/main/screenshots/handtrankingdemo.gif)
-- It might be too blur to see, but when I close my finger, the endpoint_range gets smaller.
+- It might be too blur to see the small text from the gif. :( 
+- It is basically when my in-game characters close fingers, the endpoint_range will gets smaller. 
+- When my in-game characters hold on to something, the characters' hand will stop closing. 
+- Based on that, I can figure out where is the point the stepper motor should stop. 
+- I can send back that information to OpenGloveDriver to stop the stepper motor in the right place.
