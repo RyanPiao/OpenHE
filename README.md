@@ -34,5 +34,7 @@ The basic idea:
 
 # Update 2
 - calculated all endpoint_range for left hand.
+- 
 ![demo](https://github.com/RyanPiao/OpenHE/blob/main/screenshots/handtrankingdemo.gif)
+
 -It might be too blur to see, but when I close my finger, the endpoint_range gets smaller.
