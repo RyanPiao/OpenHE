@@ -33,4 +33,6 @@ The basic idea:
 4. Even futher,I can use a classifier to predict the hand pose. It keeps track of the previous predictions and then predicts the finger position to be the most common pose in the pass. Hopefully, It will reduce latency.
 
 # Update 2
-Coming soon.
+- calculated all endpoint_range for left hand.
+![demo](https://github.com/RyanPiao/OpenHE/blob/main/screenshots/handtrankingdemo.gif)
+-It might be too blur to see, but when I close my finger, the endpoint_range gets smaller.
