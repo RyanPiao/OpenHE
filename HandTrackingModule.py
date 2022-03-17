@@ -1,6 +1,7 @@
 import cv2 as cv
 import mediapipe as mp
 import time
+import numpy as np
 
 # class creation
 class handDetector():
@@ -31,29 +32,26 @@ class handDetector():
         return img
 
     def findPosition(self,img, draw=True):
-        """Lists the position/type of landmarks
-        we give in the list and in the list ww have stored
-        type and position of the landmarks.
-        List has all the lm position"""
+        """Lists the position/type of hand, and finger angles."""
         lmlist = []
+        joint_list = [[4,3,1], [8,7,5], [12,11,9], [16,15,13], [20,19,17]]
         # check wether any landmark was detected
         if self.results.multi_hand_landmarks:
             #Which hand are we talking about
-            handNo = self.results.multi_handedness
-            for idx, classification in enumerate(handNo):
+            for idx, classification in enumerate(self.results.multi_handedness):
                 # Left hand or Right hand, that is quesion.
                 # Index=0 -> Left | Index=1 -> Right
                 index = classification.classification[0].index
-                label = classification.classification[0].label
-                score = classification.classification[0].score
-            myHand = self.results.multi_hand_landmarks[0]
-            # Get id number and landmark information
-            for id, lm in enumerate(myHand.landmark):
-                # id will give id of landmark in exact index number
-                # height width and channel
-                h,w,c = img.shape
-                #find the position
-                cx,cy = int(lm.x*w), int(lm.y*h) #center
-                # print(id,cx,cy)
-                lmlist.append([id,cx,cy,index])
+            for num, hand in enumerate(self.results.multi_hand_landmarks):
+                #Loop through joint sets 
+                for joint in joint_list:
+                    a = np.array([hand.landmark[joint[0]].x, hand.landmark[joint[0]].y]) # First coord
+                    b = np.array([hand.landmark[joint[1]].x, hand.landmark[joint[1]].y]) # Second coord
+                    c = np.array([hand.landmark[joint[2]].x, hand.landmark[joint[2]].y]) # Third coord
+                    radians = np.arctan2(c[1] - b[1], c[0]-b[0]) - np.arctan2(a[1]-b[1], a[0]-b[0])
+                    angle = np.abs(radians*180.0/np.pi)
+                    if angle > 180.0:
+                        angle = 360-angle
+                    # Get finger id, finger angle, side of hand.
+                    lmlist.append([num,angle,index])
         return lmlist
