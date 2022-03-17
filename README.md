@@ -33,4 +33,10 @@ The basic idea:
 4. Even futher,I can use a classifier to predict the hand pose. It keeps track of the previous predictions and then predicts the finger position to be the most common pose in the pass. Hopefully, It will reduce latency.
 
 # Update 2
-Coming soon.
+- scucessfully track and calculated all endpoint_range for left hand.\
+![demo](https://github.com/RyanPiao/OpenHE/blob/main/screenshots/handtrankingdemo.gif)
+- It might be too blur to see the small text from the gif. :( 
+- It is basically when my in-game characters close fingers, the endpoint_range will gets smaller. 
+- When my in-game characters hold on to something, the characters' hand will stop closing. 
+- Based on that, I can figure out where is the point the stepper motor should stop. 
+- I can send back that information to OpenGloveDriver to stop the stepper motor in the right place.
