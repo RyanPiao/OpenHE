@@ -2,6 +2,7 @@ import cv2 as cv
 import mediapipe as mp
 import time
 import numpy as np
+import random
 
 # class creation
 class handDetector():
@@ -46,16 +47,28 @@ class handDetector():
                 # Index=0 -> Left | Index=1 -> Right
                 index = classification.classification[0].index
             for num, hand in enumerate(self.results.multi_hand_landmarks):
-                #Loop through joint sets 
-                for joint in joint_list:
-                    a = np.array([hand.landmark[joint[0]].x, hand.landmark[joint[0]].y, hand.landmark[joint[0]].z]) # First coord
-                    b = np.array([hand.landmark[joint[1]].x, hand.landmark[joint[1]].y, hand.landmark[joint[1]].z]) # Second coord
-                    c = np.array([hand.landmark[joint[2]].x, hand.landmark[joint[2]].y, hand.landmark[joint[2]].z]) # Third coord
-                    # Calculate angle between three points using their 3D coordinates
-                    ba = a - b
-                    bc = c - b
-                    cosine_angle = np.dot(ba, bc) / (np.linalg.norm(ba) * np.linalg.norm(bc))
-                    angle = np.arccos(cosine_angle)
-                    # Put figer id, calculated angle, and side of hand into a list.
-                    lmlist.append([num,angle,index])
+                w = np.array([hand.landmark[0].x, hand.landmark[0].y, hand.landmark[0].z]) # wrist coord
+                # Check if there is previous wrist coord exist, if not set current one to previous one.
+                if not('wp' in globals()): 
+                    global wp
+                    wp = w
+                else:
+                    change_in_w = np.divide(np.subtract(w,wp),wp) # Percentage change wrist coord.
+                    wp = w # update new wrist coord to previous coord.
+
+                    # If change in wrist coord is greater than a certain threshold, next action will be taken. 
+                    if (change_in_w>[0.001,0.001,0.001]).all():
+                        print(change_in_w)
+                        #Loop through joint sets 
+                        # for joint in joint_list:
+                        #     a = np.array([hand.landmark[joint[0]].x, hand.landmark[joint[0]].y, hand.landmark[joint[0]].z]) # First coord
+                        #     b = np.array([hand.landmark[joint[1]].x, hand.landmark[joint[1]].y, hand.landmark[joint[1]].z]) # Second coord
+                        #     c = np.array([hand.landmark[joint[2]].x, hand.landmark[joint[2]].y, hand.landmark[joint[2]].z]) # Third coord
+                        #     # Calculate angle between three points using their 3D coordinates
+                        #     ba = a - b
+                        #     bc = c - b
+                        #     cosine_angle = np.dot(ba, bc) / (np.linalg.norm(ba) * np.linalg.norm(bc))
+                        #     angle = np.arccos(cosine_angle)
+                        #     # Put figer id, calculated angle, and side of hand into a list.
+                        #     lmlist.append([num,angle,index])
         return lmlist
